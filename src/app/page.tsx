@@ -3,10 +3,10 @@ import { Tag } from "@/components/ui/Tag";
 import { Section } from "@/components/sections/Section";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Container } from "@/components/ui/Container";
-import { capabilities, credibility, experience, metrics, projects, site, stack } from "@/content";
+import { capabilities, experience, metrics, projects, site, stack } from "@/content";
 
 export default function Home() {
-  const featured = projects.filter((p) => p.featured).slice(0, 3);
+  const featured = projects.filter((p) => p.featured).slice(0, 6);
   return (
     <main className="flex flex-col">
       {/* 1) Hero */}
@@ -176,56 +176,6 @@ export default function Home() {
                   <Tag key={t}>{t}</Tag>
                 ))}
               </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* 7) Credibility */}
-      <Section
-        id="credibility"
-        eyebrow="Proof"
-        title="Credibility"
-        description="Signals of craft, leadership, and external validation."
-      >
-        <div className="grid gap-6 md:grid-cols-2">
-          {credibility.map((c, idx) => (
-            <div
-              key={`${c.kind}-${idx}`}
-              className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950"
-            >
-              <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                {c.kind}
-              </div>
-              {"href" in c && c.href ? (
-                <a
-                  className="mt-2 block text-sm font-semibold text-zinc-900 hover:underline dark:text-zinc-100"
-                  href={c.href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {c.title}
-                </a>
-              ) : (
-                <div className="mt-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  {c.title}
-                </div>
-              )}
-              {"event" in c && c.event ? (
-                <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
-                  {c.event}
-                </div>
-              ) : null}
-              {"venue" in c && c.venue ? (
-                <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
-                  {c.venue}
-                </div>
-              ) : null}
-              {"org" in c && c.org ? (
-                <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
-                  {c.org}
-                </div>
-              ) : null}
             </div>
           ))}
         </div>

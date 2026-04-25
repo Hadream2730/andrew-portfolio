@@ -4,7 +4,7 @@ export type SocialLink = {
 };
 
 export const site = {
-  name: "Your Name",
+  name: "Andrew Greenhut",
   role: "Senior AI Engineer",
   location: "City, Country",
   tagline: "I build and ship reliable AI systems with measurable impact.",
