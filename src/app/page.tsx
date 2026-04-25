@@ -1,65 +1,269 @@
-import Image from "next/image";
+import { ButtonLink } from "@/components/ui/Button";
+import { Tag } from "@/components/ui/Tag";
+import { Section } from "@/components/sections/Section";
+import { ProjectCard } from "@/components/ProjectCard";
+import { Container } from "@/components/ui/Container";
+import { capabilities, credibility, experience, metrics, projects, site, stack } from "@/content";
 
 export default function Home() {
+  const featured = projects.filter((p) => p.featured).slice(0, 3);
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="flex flex-col">
+      {/* 1) Hero */}
+      <section className="py-20 sm:py-28">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <div className="flex flex-wrap items-center gap-2">
+                <Tag>{site.role}</Tag>
+                <Tag>{site.location}</Tag>
+              </div>
+              <h1 className="mt-5 text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
+                {site.tagline}
+              </h1>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-600 dark:text-zinc-300">
+                {site.summary}
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <ButtonLink href={site.ctas.primary.href} variant="primary">
+                  {site.ctas.primary.label}
+                </ButtonLink>
+                <ButtonLink href={site.ctas.secondary.href} variant="secondary">
+                  {site.ctas.secondary.label}
+                </ButtonLink>
+              </div>
+            </div>
+            <div className="lg:col-span-4">
+              <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-950">
+                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                  Focus areas
+                </div>
+                <ul className="mt-4 space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+                  <li>LLM applications + agents</li>
+                  <li>Evaluation + observability</li>
+                  <li>Production ML systems (MLOps)</li>
+                  <li>Applied ML (NLP/CV)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 2) Impact metrics */}
+      <section className="border-y border-zinc-200/70 bg-white py-10 dark:border-zinc-800/70 dark:bg-black">
+        <Container>
+          <dl className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {metrics.slice(0, 4).map((m) => (
+              <div
+                key={m.label}
+                className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
+              >
+                <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                  {m.label}
+                </dt>
+                <dd className="mt-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                  {m.value}
+                </dd>
+                {m.detail ? (
+                  <dd className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+                    {m.detail}
+                  </dd>
+                ) : null}
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </section>
+
+      {/* 3) Featured case studies */}
+      <Section
+        id="featured"
+        eyebrow="Case studies"
+        title="Featured work"
+        description="Outcome-first case studies with enough technical depth to evaluate senior-level scope."
+      >
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {featured.map((p) => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </Section>
+
+      {/* 4) Capabilities */}
+      <Section
+        id="capabilities"
+        eyebrow="What I build"
+        title="Capabilities"
+        description="The areas I’m most effective in—where I can lead and ship end-to-end."
+      >
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {capabilities.map((c) => (
+            <div
+              key={c.title}
+              className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <div className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                {c.title}
+              </div>
+              <div className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
+                {c.description}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {c.tags.map((t) => (
+                  <Tag key={t}>{t}</Tag>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
+      </Section>
+
+      {/* 5) Experience snapshot */}
+      <Section
+        id="experience"
+        eyebrow="Experience"
+        title="Recent roles"
+        description="Metric-first highlights with scope, ownership, and cross-functional impact."
+      >
+        <div className="grid gap-6 lg:grid-cols-2">
+          {experience.slice(0, 4).map((e) => (
+            <div
+              key={`${e.company}-${e.title}`}
+              className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                    {e.title}
+                  </div>
+                  <div className="text-sm text-zinc-600 dark:text-zinc-300">
+                    {e.company}
+                  </div>
+                </div>
+                <div className="text-xs text-zinc-500 dark:text-zinc-400">
+                  {e.timeframe}
+                </div>
+              </div>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
+                {e.bullets.slice(0, 3).map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* 6) Tech stack */}
+      <Section
+        id="stack"
+        eyebrow="Stack"
+        title="Tools I ship with"
+        description="A curated stack—focused on what I’ve used to deliver production results."
+      >
+        <div className="grid gap-6 md:grid-cols-2">
+          {Object.entries(stack).map(([group, items]) => (
+            <div
+              key={group}
+              className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <div className="text-sm font-semibold capitalize text-zinc-900 dark:text-zinc-100">
+                {group.replaceAll("_", " ")}
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {items.map((t) => (
+                  <Tag key={t}>{t}</Tag>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* 7) Credibility */}
+      <Section
+        id="credibility"
+        eyebrow="Proof"
+        title="Credibility"
+        description="Signals of craft, leadership, and external validation."
+      >
+        <div className="grid gap-6 md:grid-cols-2">
+          {credibility.map((c, idx) => (
+            <div
+              key={`${c.kind}-${idx}`}
+              className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                {c.kind}
+              </div>
+              {"href" in c && c.href ? (
+                <a
+                  className="mt-2 block text-sm font-semibold text-zinc-900 hover:underline dark:text-zinc-100"
+                  href={c.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {c.title}
+                </a>
+              ) : (
+                <div className="mt-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                  {c.title}
+                </div>
+              )}
+              {"event" in c && c.event ? (
+                <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+                  {c.event}
+                </div>
+              ) : null}
+              {"venue" in c && c.venue ? (
+                <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+                  {c.venue}
+                </div>
+              ) : null}
+              {"org" in c && c.org ? (
+                <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+                  {c.org}
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* 8) Contact CTA */}
+      <section className="border-t border-zinc-200/70 py-16 dark:border-zinc-800/70">
+        <Container>
+          <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8 dark:border-zinc-800 dark:bg-zinc-950 sm:p-10">
+            <div className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-300">
+              Contact
+            </div>
+            <div className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-3xl">
+              Let’s build something that ships.
+            </div>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600 dark:text-zinc-300">
+              Open to senior AI/ML roles and selective consulting/advisory
+              engagements. The fastest way to reach me is email.
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={`mailto:${site.contact.email}`}
+                className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+              >
+                Email me
+              </a>
+              <a
+                href={site.contact.calendly}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-zinc-300/70 px-5 py-2.5 text-sm font-medium text-zinc-900 transition-colors hover:bg-white dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-900"
+              >
+                Book a call
+              </a>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </main>
   );
 }
