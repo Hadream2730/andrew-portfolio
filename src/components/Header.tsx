@@ -10,7 +10,6 @@ const nav = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
-  { href: "/writing", label: "Writing" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -47,9 +46,11 @@ export function Header() {
           </nav>
           <div className="flex items-center gap-3">
             <ButtonLink href={site.ctas.primary.href} variant="secondary">
-              Resume
+              {site.ctas.primary.label}
             </ButtonLink>
-            <ButtonLink href={site.ctas.secondary.href}>Projects</ButtonLink>
+            <ButtonLink href={site.ctas.secondary.href}>
+              {site.ctas.secondary.label}
+            </ButtonLink>
           </div>
         </div>
       </Container>

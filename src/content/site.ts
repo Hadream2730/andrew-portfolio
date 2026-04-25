@@ -11,7 +11,7 @@ export const site = {
   summary:
     "Senior AI Engineer specializing in LLM applications, evaluation, and production ML systems. I partner with product and engineering to deliver outcomes: higher quality, lower latency, and lower cost.",
   ctas: {
-    primary: { label: "Download Resume", href: "/resume.pdf" },
+    primary: { label: "Contact", href: "/contact" },
     secondary: { label: "View Projects", href: "/projects" },
   },
   contact: {
