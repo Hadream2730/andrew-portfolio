@@ -25,9 +25,6 @@ export function ProjectCard({ project }: { project: Project }) {
             <Tag key={c}>{c}</Tag>
           ))}
         </div>
-        <div className="mt-2 text-sm font-medium text-zinc-900 group-hover:underline dark:text-zinc-100">
-          View case study
-        </div>
       </div>
     </Link>
   );

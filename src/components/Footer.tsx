@@ -13,22 +13,13 @@ export function Footer() {
             <div>{site.role}</div>
           </div>
           <div className="flex flex-wrap items-center gap-4">
-            {site.socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {s.label}
-              </a>
-            ))}
             <a
-              href={`mailto:${site.contact.email}`}
+              href={site.contact.calendly}
               className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
+              target="_blank"
+              rel="noreferrer"
             >
-              Email
+              Book a call
             </a>
           </div>
         </div>

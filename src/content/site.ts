@@ -15,14 +15,9 @@ export const site = {
     secondary: { label: "View Projects", href: "/projects" },
   },
   contact: {
-    email: "you@example.com",
-    calendly: "https://calendly.com/",
+    calendly: "https://calendly.com/clientsuccess-bsdata/30min",
   },
-  socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/" },
-    { label: "GitHub", href: "https://github.com/" },
-    { label: "Google Scholar", href: "https://scholar.google.com/" },
-  ] satisfies SocialLink[],
+  socials: [] satisfies SocialLink[],
   seo: {
     title: "Senior AI Engineer | Portfolio",
     description:

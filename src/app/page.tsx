@@ -243,20 +243,14 @@ export default function Home() {
             </div>
             <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600 dark:text-zinc-300">
               Open to senior AI/ML roles and selective consulting/advisory
-              engagements. The fastest way to reach me is email.
+              engagements. Use the scheduling link to book time.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={`mailto:${site.contact.email}`}
-                className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
-              >
-                Email me
-              </a>
               <a
                 href={site.contact.calendly}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-zinc-300/70 px-5 py-2.5 text-sm font-medium text-zinc-900 transition-colors hover:bg-white dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-900"
+                className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 Book a call
               </a>
