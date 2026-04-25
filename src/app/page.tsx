@@ -4,9 +4,10 @@ import { Section } from "@/components/sections/Section";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Container } from "@/components/ui/Container";
 import { capabilities, experience, metrics, projects, site, stack } from "@/content";
+import Image from "next/image";
 
 export default function Home() {
-  const featured = projects.filter((p) => p.featured).slice(0, 6);
+  const featured = projects.filter((p) => p.featured).slice(0, 3);
   return (
     <main className="flex flex-col">
       {/* 1) Hero */}
@@ -35,10 +36,30 @@ export default function Home() {
             </div>
             <div className="lg:col-span-4">
               <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-950">
-                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                <div className="flex items-center gap-4">
+                  <div className="relative h-16 w-16 overflow-hidden rounded-full border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+                    <Image
+                      src="/window.svg"
+                      alt={`${site.name} headshot`}
+                      fill
+                      className="object-contain p-3 opacity-90"
+                      priority
+                    />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                      {site.name}
+                    </div>
+                    <div className="text-sm text-zinc-600 dark:text-zinc-300">
+                      {site.role}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                   Focus areas
                 </div>
-                <ul className="mt-4 space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+                <ul className="mt-3 space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
                   <li>LLM applications + agents</li>
                   <li>Evaluation + observability</li>
                   <li>Production ML systems (MLOps)</li>
