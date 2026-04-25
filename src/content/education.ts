@@ -7,18 +7,14 @@ export type EducationItem = {
 
 export const education: EducationItem[] = [
   {
-    school: "University Name",
-    degree: "M.S. in Computer Science (AI/ML focus)",
-    timeframe: "2018 – 2020",
-    details: [
-      "Thesis: Topic title (optional)",
-      "Relevant coursework: ML, NLP, Distributed Systems (optional)",
-    ],
+    school: "Massachusetts Institute of Technology",
+    degree: "Master of Science (MS)",
+    timeframe: "2008 – 2010",
   },
   {
-    school: "University Name",
-    degree: "B.S. in Computer Science",
-    timeframe: "2014 – 2018",
+    school: "Massachusetts Institute of Technology",
+    degree: "Bachelor of Science (BS)",
+    timeframe: "2002 – 2006",
   },
 ];
 
