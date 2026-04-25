@@ -6,7 +6,7 @@ export type SocialLink = {
 export const site = {
   name: "Andrew Greenhut",
   role: "Senior AI Engineer",
-  location: "City, Country",
+  location: "104 W Quincy St Somerville MA 02144",
   tagline: "I build and ship reliable AI systems with measurable impact.",
   summary:
     "Senior AI Engineer specializing in LLM applications, evaluation, and production ML systems. I partner with product and engineering to deliver outcomes: higher quality, lower latency, and lower cost.",

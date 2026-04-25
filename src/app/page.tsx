@@ -39,10 +39,10 @@ export default function Home() {
                 <div className="flex items-center gap-4">
                   <div className="relative h-16 w-16 overflow-hidden rounded-full border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
                     <Image
-                      src="/window.svg"
+                      src="/avatar.png"
                       alt={`${site.name} headshot`}
                       fill
-                      className="object-contain p-3 opacity-90"
+                      className="object-cover"
                       priority
                     />
                   </div>
@@ -52,6 +52,9 @@ export default function Home() {
                     </div>
                     <div className="text-sm text-zinc-600 dark:text-zinc-300">
                       {site.role}
+                    </div>
+                    <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                      {site.location}
                     </div>
                   </div>
                 </div>
